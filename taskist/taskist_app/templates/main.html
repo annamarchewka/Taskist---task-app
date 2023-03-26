@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<title>Home</title>
+<body>
+{% load static %}
+<style>
+    body {
+        background-image: url("{% static 'hens.jpg' %}");
+        background-size: cover;
+    }
+</style>
+
+<div class="container-fluid"><b><h2>{{ group_name }}</b></h2></b></div>
+<div class="container-fluid">
+</br>
+ </br>
+<p lass="container-fluid" style="color: gray();"> Our local team aims to change the way our society views these animals and fight their continued suffering. Through its actions, our team strives to end factory farming and encourage a transition to non-animal food sources.</p>
+</div>
+</br>
+<p class="container-fluid" style="color: steelblue;"><b>We help animals, particularly farmed animals, as effectively as possible, by using our decades of experience and the available evidence to increase the impact of our work. We envision a world where animals are not treated as products. Where instead of asking how we can use them for the most profit, we ask: how can we live together? We owe it to the animals exploited by industries around the world to be constantly learning and striving to be better. For this reason we are big supporters of effective altruism - the aim of using evidence and reasoning to choose the best ways to help others. We read and study a lot. We are open to constructive criticism and admitting we made mistakes. We will change our approach if we think there is a better way.</p>
+</b></br>
+
+<h4 class="container-fluid"> <b>Members </b></h4>
+</br>
+
+
+<div class="col-sm-4">
+      {% for member in members %}
+       <li class="list-group-item" style="background-color: transparent">
+           <a style="color:black;text-decoration:none;" href="/profile/{{ member.username_id }}">{{ member.name_surname }}</a>
+       </li>
+        {% endfor %}
+</div>
+
+</body>
+
+{% endblock %}

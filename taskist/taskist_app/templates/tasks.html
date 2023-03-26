@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block content %}
+
+<title>tasks</title>
+
+</br>
+
+  <div class="container-fluid"><b><h2>Task to take</b></h2></div>
+</br>
+<table id="totake" class="table table-hover ">
+
+  <tr style="background-color: paleturquoise">
+    <th>Task</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Points</th>
+    <th>Time</th>
+      <th></th>
+  </tr>
+
+{% for task in freetasks %}
+   <tr scope="row">
+       <td><a style="font-weight:bold;text-decoration:none;color:black;" href="/taskdetail/{{ task.id }}">{{ task.task_name }}</a></td>
+       <td><a style="color:black;text-decoration:none;" href="/taskdetail/{{ task.id }}">{{ task.task_descr }}</a></td>
+       <td> {{ task.status }} </td>
+       <td> {{ task.points }} </td>
+       <td> {{ task.estimated_time }}H</td>
+       <td><form method="post" action="">
+           {% csrf_token %}
+           <input type="hidden" name="task_id" value="{{ task.id }}">
+           <button class="btn btn-outline-light btn-md px-5" type="submit">Take!</button>
+       </form></td>
+   </tr>
+{% endfor %}
+
+</table >
+
+</br>
+  <h2 class="container-fluid"><b>Tasks with owners</b></h2>
+</br>
+<table id="taskswithowners" class="table table-hover">
+
+  <tr style="background-color: lavender">
+    <th>Task</th>
+    <th>Description</th>
+    <th>Status</th>
+    <th>Points</th>
+    <th>Time</th>
+    <th>Owner</th>
+  </tr>
+
+{% for task in takentasks %}
+   <tr>
+       <td><a style="font-weight:bold;text-decoration:none;color:black;" href="/taskdetail/{{ task.id }}">{{ task.task_name }}</a></td>
+       <td><a style="color:black;text-decoration:none;" href="/taskdetail/{{ task.id }}">{{ task.task_descr }}</a></td>
+       <td> {{ task.status }} </td>
+       <td> {{ task.points }} </td>
+       <td> {{ task.estimated_time }}H </td>
+       <td><form method="POST" action=''>
+           {% csrf_token %}
+           <input type="hidden" name="othertask_id" value="{{ task.id }}">
+           <button class="btn btn-outline-light btn-md px-5" type="submit" > {{ task.username.name_surname }}
+           </button>
+       </form></td>
+{% endfor %}
+
+
+
+</table>
+</br>
+  <h2 class="container-fluid"><b>My tasks</b></h2>
+</br>
+<table id="ownership" class="table table-hover">
+
+  <tr style="background-color: pink">
+    <th>Task</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Points</th>
+      <th>Time</th>
+      <th></th>
+      <th></th>
+  </tr>
+
+{% for mytask in mytasks %}
+   <tr>
+        <td><a style="font-weight:bold;text-decoration:none;color:black;" href="/taskdetail/{{ mytask.id }}">{{ mytask.task_name }}</a></td>
+       <td><a style="color:black;text-decoration:none;" href="/taskdetail/{{ mytask.id }}">{{ mytask.task_descr }}</a></td>
+       <td> {{ mytask.status }} </td>
+       <td> {{ mytask.points }} </td>
+       <td> {{ mytask.estimated_time }}H </td>
+       <td><form method="post" action="">
+           {% csrf_token %}
+           <input type="hidden" name="mytask_id" value="{{ mytask.id }}">
+           <button class="btn btn-outline-light btn-md px-5" type="submit">Give back</button>
+       </form></td>
+       <td><form method="post" action="">
+           {% csrf_token %}
+           <input type="hidden" name="done_id" value="{{ mytask.id }}">
+           <button class="btn btn-outline-light btn-md px-5" type="submit">Done</button>
+       </form></td>
+   </tr>
+{% endfor %}
+
+</table>
+{% endblock %}

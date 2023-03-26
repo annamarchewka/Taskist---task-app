@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<title>new task</title>
+</br>
+<div class="container-fluid"><b><h2>New task</b></h2></div>
+</br>
+</br>
+<div class="container-fluid" style="background-color: lightgoldenrodyellow"><h4>
+    </br><b>Create a new task for your team</b></br></br>
+</h4></div>
+</br>
+
+<form class="col-sm-6" action="" method="post">
+{% csrf_token %}
+{{ form.as_p }} <input  type="hidden" class="col-sm-6" type="submit" name="addtask" value="ADD">
+   <button class="btn btn-outline-light btn-sm px-5" type="submit" name="addtask"> ADD </button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html style="margin: 20px">
+  <head>
+    {% block head %}
+      {% block style %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    {% endblock%}
+    {% endblock %}
+  </head>
+
+  <header>
+<nav class="navbar -nav" style="background-color: whitesmoke; color: black">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <div class="navbar-brand" style='background-color: lightgoldenrodyellow'>Effi</div>
+    </div>
+    <ul class="nav navbar-nav bg-light">
+      <li class="active"><a style="color:black;text-decoration:none;" href="/accounts/profile/">Home</a></li>
+      <li ><a style="color:black;text-decoration:none;" href='/tasks/{{ user.id }}'>Task management</a></li>
+      <li><a style="color:black;text-decoration:none;" href='/addtask/'>Create task</a></li>
+      <li><a style="color:black;text-decoration:none;" href='/score/{{ user.id }}'>Score</a></li>
+      <li><a style="color:black;text-decoration:none;" href="{% url 'settings' %}">Settings</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a style="color:black;text-decoration:none;" href='/profile/{{ user.id }}'><span class="glyphicon glyphicon-user"></span> My profile </a></li>
+      <li><a style="color:black;text-decoration:none;" href="/logout"><span class="glyphicon glyphicon-log-in"></span> Log out </a></li>
+    </ul>
+  </div>
+</nav>
+  </header>
+
+    <div id="content">{% block content %}{% endblock %}</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <body>
+  <body/>
+</html>
+
+

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+
+<title>profile</title>
+</br>
+
+
+<div class="container-fluid"><b><h2>{{ profile.name_surname }}</b></h2></b></div>
+</br>
+
+<div class='col-sm-2'  style="background-color: beige;padding: 15px;">
+Actual score: <b style="color: mediumpurple"> {{ score }} </b>
+
+    </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+<table id="ownership" class="table table-hover">
+
+  <tr style="background-color: pink">
+    <th>Task</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Points</th>
+      <th>Time</th>
+      <th></th>
+  </tr>
+
+{% for task in tasks %}
+   <tr>
+        <td><a style="font-weight:bold;text-decoration:none;color:black;" href="/taskdetail/{{ task.id }}">{{ task.task_name }}</a></td>
+       <td><a style="color:black;text-decoration:none;" href="/taskdetail/{{ task.id }}">{{ task.task_descr }}</a></td>
+       <td> {{ task.status }} </td>
+       <td> {{ task.points }} </td>
+       <td> {{ task.estimated_time }}H </td>
+   </tr>
+{% endfor %}
+
+</table>
+
+</br>
+</br>
+</br>
+</br>
+</br>
+
+<div class="container-fluid"><b><h4>Task history</b></h4></b></div>
+</br>
+
+<table id="ownership" class="table table-hover">
+
+  <tr style="background-color: powderblue">
+    <th>Task</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Points</th>
+      <th>Time</th>
+      <th></th>
+  </tr>
+
+{% for task in histtasks %}
+   <tr>
+        <td><a style="font-weight:bold;text-decoration:none;color:black;" href="/taskdetail/{{ task.id }}">{{ task.task_name }}</a></td>
+       <td><a style="color:black;text-decoration:none;" href="/taskdetail/{{ task.id }}">{{ task.task_descr }}</a></td>
+       <td> {{ task.status }} </td>
+       <td> {{ task.points }} </td>
+       <td> {{ task.estimated_time }}H </td>
+   </tr>
+{% endfor %}
+
+</table>
+
+{% endblock %}
+
+
+
+
+

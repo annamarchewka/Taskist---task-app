@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<title>scoreboard</title>
+</br>
+
+  <div class="container-fluid"><b><h2>Scoreboard</b></h2></div>
+</br>
+</br>
+
+<table class="table table-hover">
+
+  <tr style="background-color: lavender">
+    <th>Activist</th>
+    <th>Score</th>
+  </tr>
+
+{% for i in users %}
+   <tr>
+       <td><a style="color:black;text-decoration:none;" href="/profile/{{ i.username_id }}"> {{ i.name_surname }}</a> </td>
+       <td style="color: indianred"><b> {{ i.score }} </b></td>
+   </tr>
+{% endfor %}
+
+</table>
+
+</br>
+
+  <div class="container-fluid"><b><h3>Sum up</b></h3></div>
+
+</br>
+
+<ul class="list-group list-group-flush col-sm-4">
+<li class="list-group-item" style="color: indianred;">
+<b>Target: </b> {{ alltaskscore }}
+</li>
+<li class="list-group-item">
+<b>Team score:   </b>   {{ takenscore }}
+</li>
+<li class="list-group-item">
+<b>Free points:</b> {{ freescore }}
+</li>
+</ul>
+
+{% endblock %}

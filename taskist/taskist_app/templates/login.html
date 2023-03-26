@@ -1,0 +1,42 @@
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
+
+<body>
+{% load static %}
+<style>
+    body {
+        background-image: url("{% static 'hens.jpg' %}");
+        background-size: cover;
+    }
+</style>
+
+
+  {% block content %}
+
+<title>log in</title>
+
+<p style="background-color: transparent">
+<header style="background-color: transparent" class="container-fluid"><b><h2>HELLO! Please enter your login and password </b></h2></b></header>
+</p>
+   <div style="background-color: transparent" class="container-fluid" style="border-radius: 1rem;">
+</br>
+                <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+               <button class="btn btn-outline-light btn-md px-5" type="submit">Login</button>
+                </form>
+
+   </div>
+
+{% endblock %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
