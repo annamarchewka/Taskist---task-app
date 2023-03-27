@@ -31,7 +31,7 @@ class Task(models.Model):
     estimated_time = models.IntegerField(null=True)
     points = models.IntegerField(choices=POINTS, default=1)
     username = models.ForeignKey(User_info, on_delete=models.CASCADE, null=True)
-    group_name = models.ForeignKey(Group, on_delete=models.CASCADE)
+    group_name = models.ForeignKey(Group, on_delete=models.CASCADE, null=True)
     status = models.IntegerField(choices=STATUS, default=1)
     done = models.IntegerField(default=1, null=True)
 
@@ -43,7 +43,7 @@ class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True)
 
 class Subtask(models.Model):
-    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True)
     subtask = models.CharField(max_length=150, null=True)
 
 class Photo(models.Model):

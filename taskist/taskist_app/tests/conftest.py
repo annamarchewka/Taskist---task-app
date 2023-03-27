@@ -16,13 +16,11 @@ def task():
                                estimated_time=1,
                                points=1,
                                username=None,
-                               group_name_id=1,
                                status=1,
                                done=1)
     return task
 
 @pytest.fixture
 def subtask():
-    subtask = Subtask.objects.create(subtask=None,
-                               task_id=1)
+    subtask = Subtask.objects.create(subtask=None)
     return subtask
